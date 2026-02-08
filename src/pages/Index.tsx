@@ -46,7 +46,7 @@ const Index = () => {
               >
                 <Icon className="w-4 h-4" />
                 <span className="hidden sm:inline">{tab.label}</span>
-                {count !== null && count > 0 && (
+                {count !== null && (
                   <span className="ml-1 min-w-[1.25rem] h-5 px-1.5 rounded-full bg-muted text-muted-foreground text-[11px] font-semibold inline-flex items-center justify-center">
                     {count}
                   </span>
