@@ -28,10 +28,14 @@ const Index = () => {
           <h1 className="font-serif text-xl font-semibold tracking-tight">Research Pipeline</h1>
           <p className="text-xs text-muted-foreground mt-0.5">Your calm research corner</p>
         </div>
-        <nav className="container flex gap-1 -mb-px">
+      <nav className="container flex gap-1 -mb-px">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
+            const count = tab.id === "ideas" ? data.ideas.length
+              : tab.id === "projects" ? data.projects.length
+              : tab.id === "deadlines" ? data.deadlines.length
+              : null;
             return (
               <button
                 key={tab.id}
@@ -42,6 +46,11 @@ const Index = () => {
               >
                 <Icon className="w-4 h-4" />
                 <span className="hidden sm:inline">{tab.label}</span>
+                {count !== null && count > 0 && (
+                  <span className="ml-1 min-w-[1.25rem] h-5 px-1.5 rounded-full bg-muted text-muted-foreground text-[11px] font-semibold inline-flex items-center justify-center">
+                    {count}
+                  </span>
+                )}
                 {isActive && (
                   <motion.div
                     layoutId="activeTab"
